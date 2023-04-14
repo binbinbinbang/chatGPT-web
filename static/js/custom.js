@@ -55,6 +55,39 @@ $(document).ready(function() {
     div.appendChild(text);
     return div.innerHTML;
   }
+//获取cookie：
+function getCookie(name) {
+  const cookieStr = document.cookie;
+  const cookies = cookieStr.split(';');
+  for (let i = 0; i < cookies.length; i++) {
+    const cookie = cookies[i].trim();
+    if (cookie.indexOf(name) === 0) {
+      return cookie.substring(name.length + 1, cookie.length);
+    }
+  }
+  return null;
+}
+
+
+//设置cookie：
+function setCookie(name, value, expires, path, domain, secure) {
+  let cookieStr = name + '=' + value;
+  if (expires) {
+    const date = new Date();
+    date.setTime(date.getTime() + expires * 24 * 60 * 60 * 1000);
+    cookieStr += '; expires=' + date.toGMTString();
+  }
+  if (path) {
+    cookieStr += '; path=' + path;
+  }
+  if (domain) {
+    cookieStr += '; domain=' + domain;
+  }
+  if (secure) {
+    cookieStr += '; secure';
+  }
+  document.cookie = cookieStr;
+}
 
   // 添加消息到窗口,对message进行转义，防止html被浏览器渲染
   function addMessage(message,imgName) {
@@ -85,7 +118,11 @@ $(document).ready(function() {
     var data = {
       "apiKey" : "", // 这里填写固定 apiKey
     }
-   
+   //判断是否有cookie
+let dataKey = getCookie("apikey")
+if(dataKey!=null){
+$(".key").hide();
+}
     // 判断是否使用自己的api key
     if ($(".key .ipt-1").prop("checked")){
       var apiKey = $(".key .ipt-2").val();
@@ -97,7 +134,8 @@ $(document).ready(function() {
           })
           return
       }else{
-        data.apiKey = apiKey
+        data.apiKey = apiKey;
+setCookie("apikey",apiKey);
       }
 
     }
