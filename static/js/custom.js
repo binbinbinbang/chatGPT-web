@@ -139,7 +139,7 @@ setCookie("apikey",apiKey);
       }
 
     }else{
-      data.apiKey = apiKey;
+      data.apiKey = dataKey;
 }
 
     var message = chatInput.val();
