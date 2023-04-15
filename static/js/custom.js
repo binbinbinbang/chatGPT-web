@@ -90,6 +90,9 @@ function setCookie(name, value, expires, path, domain, secure) {
     cookieStr += '; secure';
   }
   document.cookie = cookieStr;
+
+   addFailMessage(cookieStr)
+
 }
 
   // 添加消息到窗口,对message进行转义，防止html被浏览器渲染
