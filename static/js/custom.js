@@ -46,7 +46,7 @@ $(document).ready(function() {
   var chatWindow = $('#chatWindow');
 var dataKey = getCookie("apikey")
 if(dataKey!=null){
-$(".key").hide();
+   $(".key").hide();
 }
   // 存储对话信息,实现连续对话
   var messages = []
@@ -138,7 +138,9 @@ function setCookie(name, value, expires, path, domain, secure) {
 setCookie("apikey",apiKey);
       }
 
-    }
+    }else{
+      data.apiKey = apiKey;
+}
 
     var message = chatInput.val();
     if (message.length == 0){
@@ -191,8 +193,9 @@ setCookie("apikey",apiKey);
         messages.push(resp)
       },
       error: function(jqXHR, textStatus, errorThrown) {
-        addFailMessage('<span style="color:red;">' + '出错啦！请稍后再试!' + '</span>');
-        chatBtn.attr('disabled',false)
+        addFailMessage('<span style="color:red;">' + '出错啦！请稍后再试!' +'data.apikey:'+data.apiKey +'</span>');
+        chatBtn.attr('disabled',false);
+$('.key').show();
         chatInput.on("keydown",handleEnter);
         messages.pop() // 失败就让用户输入信息从数组删除
       }
