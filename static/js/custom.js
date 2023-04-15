@@ -44,7 +44,10 @@ $(document).ready(function() {
   var chatBtn = $('#chatBtn');
   var chatInput = $('#chatInput');
   var chatWindow = $('#chatWindow');
-
+var dataKey = getCookie("apikey")
+if(dataKey!=null){
+$(".key").hide();
+}
   // 存储对话信息,实现连续对话
   var messages = []
 
@@ -119,10 +122,7 @@ function setCookie(name, value, expires, path, domain, secure) {
       "apiKey" : "", // 这里填写固定 apiKey
     }
    //判断是否有cookie
-let dataKey = getCookie("apikey")
-if(dataKey!=null){
-$(".key").hide();
-}
+
     // 判断是否使用自己的api key
     if ($(".key .ipt-1").prop("checked")){
       var apiKey = $(".key .ipt-2").val();
