@@ -30,7 +30,7 @@ var common_ops = {
   },
   tip:function( msg,target ){
       layer.tips( msg, target, {
-          tips: [ 3, '#DEE1E6']
+          tips: [ 3, '#e5004f']
       });
       $('html, body').animate({
           scrollTop: target.offset().top - 10
@@ -40,8 +40,7 @@ var common_ops = {
 	  // 当#myElement被双击时，复制元素文本
 	  $(elemSelect).dblclick(function() {
       ClipboardJS.copy(this);
-      //common_ops.tip('已复制',this);
-      layer.msg("已复制")
+      common_ops.alert('已复制');
 	  });
   },
 };
