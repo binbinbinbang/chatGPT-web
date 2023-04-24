@@ -35,7 +35,14 @@ var common_ops = {
       $('html, body').animate({
           scrollTop: target.offset().top - 10
       }, 100);
-  }
+  },
+  copy:function(elemSelect){
+	  // 当#myElement被双击时，复制元素文本
+	  $(elemSelect).dblclick(function() {
+      ClipboardJS.copy(this);
+      common_ops.alert('已复制');
+	  });
+  },
 };
 
 
@@ -48,6 +55,7 @@ var dataKey = getCookie("apikey")
 if(dataKey!=null){
    $(".key").hide();
 }
+
   // 存储对话信息,实现连续对话
   var messages = []
 
@@ -90,8 +98,6 @@ function setCookie(name, value, expires, path, domain, secure) {
     cookieStr += '; secure';
   }
   document.cookie = cookieStr;
-
-   addFailMessage(cookieStr)
 
 }
 
@@ -136,14 +142,16 @@ function setCookie(name, value, expires, path, domain, secure) {
             chatInput.on("keydown",handleEnter);
           })
           return
-      }else{
-        data.apiKey = apiKey;
-setCookie("apikey",apiKey);
       }
-
-    }else{
+	  else
+	  {
+        data.apiKey = apiKey;
+		setCookie("apikey",apiKey);
+      }
+    }
+	else{
       data.apiKey = dataKey;
-}
+	}
 
     var message = chatInput.val();
     if (message.length == 0){
@@ -194,6 +202,8 @@ setCookie("apikey",apiKey);
         chatInput.on("keydown",handleEnter);
         // 将回复添加到数组
         messages.push(resp)
+		//".message-text"双击可复制
+		common_ops.copy(".message-text");
       },
       error: function(jqXHR, textStatus, errorThrown) {
         addFailMessage('<span style="color:red;">' + '出错啦！请稍后再试!' +'data.apikey:'+data.apiKey +'</span>');
