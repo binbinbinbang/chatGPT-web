@@ -40,7 +40,8 @@ var common_ops = {
 	  // 当#myElement被双击时，复制元素文本
 	  $(elemSelect).dblclick(function() {
       ClipboardJS.copy(this);
-      common_ops.alert('已复制');
+      //common_ops.alert('已复制');
+	layer.msg("已复制");
 	  });
   },
 };
