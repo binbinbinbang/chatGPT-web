@@ -573,18 +573,19 @@ html #layuicss-skinlayercss {
 
 .layui-layer-msg {
     min-width: 180px;
-    border: 1px solid #D3D4D3;
     box-shadow: none
 }
 
 .layui-layer-hui {
     min-width: 100px;
-    background-color: #000;
+    background-color: #fff;
     filter: alpha(opacity=60);
-    background-color: rgba(0, 0, 0, .6);
-    color: #fff;
-    border: none
+    background-color: rgba(255, 255, 255, .6);
+    color: #555252;
+    border:1px solid #ebe6e682;
+    border-radius: 10px;
 }
+
 
 .layui-layer-hui .layui-layer-content {
     padding: 12px 25px;
