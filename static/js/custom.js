@@ -176,7 +176,7 @@ function setCookie(name, value, expires, path, domain, secure) {
 
     // 发送信息到后台
     $.ajax({
-      url: 'http://iqa3.raydose.com',
+      url: 'https://iqa3.raydose.com',
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
