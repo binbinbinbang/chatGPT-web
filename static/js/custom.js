@@ -119,7 +119,7 @@ const timer = setInterval(() => {
     clearInterval(timer);
   }
   chatWindow.animate({ scrollTop: chatWindow.prop('scrollHeight') }, 100);
-}, 100); // 0.1秒为100毫秒
+}, 10); // 0.1秒为100毫秒
 
 }
 
@@ -217,9 +217,8 @@ const timer = setInterval(() => {
 		common_ops.copy(".message-text");
       },
       error: function(jqXHR, textStatus, errorThrown) {
-        addFailMessage('<span style="color:red;">' + '出错啦！请稍后再试!' +'data.apikey:'+data.apiKey +'</span>');
+        addFailMessage('<span style="color:red;">' + '服务器很忙啦~请您稍后再试!'+'</span>');
         chatBtn.attr('disabled',false);
-$('.key').show();
         chatInput.on("keydown",handleEnter);
         messages.pop() // 失败就让用户输入信息从数组删除
         //".message-text"双击可复制
