@@ -53,10 +53,7 @@ $(document).ready(function() {
   var chatInput = $('#chatInput');
   var chatWindow = $('#chatWindow');
 var dataKey = getCookie("apikey")
-if(dataKey!=null){
-   $(".key").hide();
-}
-
+ $(".key").hide();
   // 存储对话信息,实现连续对话
   var messages = []
 
@@ -179,7 +176,7 @@ function setCookie(name, value, expires, path, domain, secure) {
 
     // 发送信息到后台
     $.ajax({
-      url: 'https://open.aiproxy.xyz/v1/chat/completions',
+      url: 'http://iqa3.raydose.com',
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
