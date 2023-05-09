@@ -118,8 +118,8 @@ const timer = setInterval(() => {
   if (index === message.length) {
     clearInterval(timer);
   }
-  chatWindow.animate({ scrollTop: chatWindow.prop('scrollHeight') }, 100);
-}, 10); // 0.1秒为100毫秒
+  chatWindow.animate({ scrollTop: chatWindow.prop('scrollHeight') }, 50);
+}, 50); // 0.1秒为100毫秒
 
 }
 
