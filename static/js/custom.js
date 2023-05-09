@@ -104,11 +104,24 @@ function setCookie(name, value, expires, path, domain, secure) {
     $(".answer .tips").css({"display":"none"});    // 打赏卡隐藏
     chatInput.val('');
     var escapedMessage = escapeHtml(message);
-    var messageElement = $('<div class="row message-bubble"><img class="chat-icon" src="./static/images/' + imgName + '"><p class="message-text">' +  escapedMessage + '</p></div>');
+    var messageElement = $('<div class="row message-bubble"><img class="chat-icon" src="./static/images/' + imgName + '"><p class="message-text"> </p></div>');
     chatWindow.append(messageElement);
-    chatWindow.animate({ scrollTop: chatWindow.prop('scrollHeight') }, 500);
+    printChar(messageElement.children()[1],escapedMessage);
   }
 
+//隔0.1秒输出字符串
+function printChar(targetElement,message){
+let index = 0;
+const timer = setInterval(() => {
+  targetElement.textContent += message[index];
+  index++;
+  if (index === message.length) {
+    clearInterval(timer);
+  }
+  chatWindow.animate({ scrollTop: chatWindow.prop('scrollHeight') }, 100);
+}, 100); // 0.1秒为100毫秒
+
+}
 
   // 请求失败不用转义html
   function addFailMessage(message) {
@@ -209,6 +222,8 @@ function setCookie(name, value, expires, path, domain, secure) {
 $('.key').show();
         chatInput.on("keydown",handleEnter);
         messages.pop() // 失败就让用户输入信息从数组删除
+        //".message-text"双击可复制
+		common_ops.copy(".message-text");
       }
     });
   });
