@@ -103,7 +103,7 @@ function setCookie(name, value, expires, path, domain, secure) {
   function addMessage(message,imgName) {
     $(".answer .tips").css({"display":"none"});    // 打赏卡隐藏
     chatInput.val('');
-    var escapedMessage = escapeHtml(message);
+    var escapedMessage = message;//escapeHtml(message);
     var messageElement = $('<div class="row message-bubble"><img class="chat-icon" src="./static/images/' + imgName + '"><p class="message-text"> </p></div>');
     chatWindow.append(messageElement);
     printChar(messageElement.children()[1],escapedMessage);
